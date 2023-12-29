@@ -1,23 +1,18 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Drawer from '../src/Drawer/index';
 
 function App() {
+  const [visibleDrawer,setvisibleDrawer] = useState(false);
+  const handleClick = () =>{
+    setvisibleDrawer(true);
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={`App ${visibleDrawer ? 'drawer-open' : ''}`}>
+      <div className='btn_savesegment_container'>
+        <button className='btn_savesegment' onClick={handleClick}>Save segment</button>
+      {  visibleDrawer && <Drawer setvisibleDrawer={setvisibleDrawer} visibleDrawer={visibleDrawer}/>}
+      </div>
     </div>
   );
 }
