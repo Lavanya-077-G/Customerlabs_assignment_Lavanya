@@ -31,9 +31,9 @@ const DrawerContent = (props) =>{
 
     <div className={ newSchema.length ? "newschema_container": ""}>
     {
-        newSchema.length ? newSchema.map((schema)=>{
+        newSchema.length ? newSchema.map((schema,index)=>{
             return(<div style={{marginBottom: '1rem'}}>
-                <Select className="select" id={schema.label} style={Style_Select} onChange={(val)=> {handleNewSchemaChange(val,schema)}}  value={schema.value} options={getOptions(schema)}/>
+                <Select className="select" id={schema.label} style={Style_Select} onChange={(val)=> {handleNewSchemaChange(val,schema,index)}}  value={schema.value} options={getOptions(schema)}/>
                 <button className="btn_minus" onClick={()=>{handleMinusClick(schema)}}><FaMinus/></button>
                 </div>)
         }) : <></>

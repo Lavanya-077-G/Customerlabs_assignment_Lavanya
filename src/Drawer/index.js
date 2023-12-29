@@ -51,10 +51,18 @@ const Drawer = ({setvisibleDrawer}) =>{
     }
     }
 
-    const handleNewSchemaChange = (val,schema) =>{
-        const fliteredOption = newSchema.filter(obj=>obj.value !== schema.value);
-        const changedOption = options.filter(obj=>obj.value === val);
-        setnewSchema([...fliteredOption,...changedOption])
+    const handleNewSchemaChange = (val,schema,index) =>{
+        let arr = [];
+        for(let i=0;i<newSchema.length;i++){
+            if(i === index){
+                const filteredOption = options.filter(obj=>obj.value === val);
+                arr.push(...filteredOption);
+            }
+            else{
+                arr.push(newSchema[i])
+            }
+        }
+        setnewSchema(arr)
     }
 
     const drawerContentProps = {
